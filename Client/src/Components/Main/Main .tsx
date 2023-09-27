@@ -1,14 +1,21 @@
-import React, { FC } from "react";
+import React, { useState, useEffect } from "react";
 
 import { VStack, Text, Button, Flex, Box, Icon } from "@chakra-ui/react";
 import PostCard from "./PostCard";
-//import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Font } from "../../utils/constants";
 import { threads } from "../../Models/Thread";
+import DataService from "../../Services/DataService";
 
 import { FaCode as ProgrammingIcon } from "react-icons/fa";
 
 const Main = () => {
+  const { categoryId } = useParams();
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [threadcards, setThreadCards] = useState([]);
+
+  useEffect(() => {}, []);
+
   return (
     <VStack w="50%">
       <Box my={6} gap={2} w="100%" display="flex" justifyContent="left">
@@ -43,7 +50,7 @@ const Main = () => {
           );
         })}
       </Flex>
-      <PostCard threads={threads} />
+      {/* <PostCard threads={threads} /> */}
     </VStack>
   );
 };
