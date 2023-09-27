@@ -1,34 +1,65 @@
-import React, { useState, useReducer } from "react";
-import { Box, VStack, Text, useBoolean } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Box, VStack, Text } from "@chakra-ui/react";
 
 import { Font, color } from "../../utils/constants";
 
-import { threads } from "../../Models/Thread";
+import { getCategories } from "../../Services/DataService";
 import { Link } from "react-router-dom";
-/* import {
-  selectedCategoryReducer,
-  initalState,
-} from "../../Store/user/SelectedCategory";
-*/
-//import SelectType from "../../Store/user/SelectedCategory";
+import Category from "../../Models/Category";
 
 const Category = () => {
-  const [id, setId] = useState(0);
-  const [bgRed, setBgRed] = useBoolean();
-  // const { id, name, Icons } = useReducer(selectedCategoryReducer, initalState);
-  /* onst dispatch = useDispatch();
+  const [cat, setCat] = useState<any | null>(null);
 
-  const dispatchSelectState = () => {
-    dispatch({
-      type: SelectType,
-      payload: {
-        id: threads.category.id,
-        name: threads.category.name,
-        Icons: threads.category.Icons,
-      },
-    });
-  };
-  */
+  useEffect(
+    getCategories()
+      .then((categories: Array<Category>) => {
+        const cats = categories.map((cat) => {
+          return (
+            <Box
+              display="flex"
+              w="100%"
+              key={cat.id}
+              bgColor={id === cat.id ? color[6] : "transparent"}
+              border="none"
+              _hover={{ bgColor: color[6], color: "white" }}
+              rounded="xl"
+              px={10}
+              py={3}
+              justifyContent="start"
+              role="group"
+              onClick={() => {
+                setId(cat.id);
+              }}
+            >
+              <Box
+                mr={2}
+                mt={1}
+                color={id === cat.id ? "white" : color[5]}
+                _groupHover={{ color: "white", fontWeight: "900" }}
+                fontSize="12px"
+              >
+                {cat.Icons}
+              </Box>
+              <Text
+                color={id === cat.id ? "white" : color[5]}
+                _groupHover={{ color: "white", fontWeight: "900" }}
+                fontSize="14px"
+                fontWeight="extrabold"
+                fontFamily={Font}
+              >
+                {cat.name}
+              </Text>
+            </Box>
+          );
+        });
+        setCat(cats);
+      })
+      .catch((err) => {
+        console.log(err);
+      }),
+    []
+  );
+
   return (
     <VStack my={10}>
       <Text
@@ -42,46 +73,7 @@ const Category = () => {
         Categories
       </Text>
       <Box mx="5px">
-        <Link to={`/categorythreads/${id}`}>
-          {threads.category.map((cat) => (
-            <Box
-              display="flex"
-              w="100%"
-              key={cat.id}
-              bgColor={bgRed ? color[6] : "transparent"}
-              border="none"
-              _hover={{ bgColor: color[6], color: "white" }}
-              rounded="xl"
-              px={10}
-              py={3}
-              justifyContent="start"
-              role="group"
-              onClick={() => {
-                setId(cat.id);
-                setBgRed.toggle();
-              }}
-            >
-              <Box
-                mr={2}
-                mt={1}
-                color={color[5]}
-                _groupHover={{ color: "white", fontWeight: "900" }}
-                fontSize="12px"
-              >
-                {cat.Icons}
-              </Box>
-              <Text
-                color={color[5]}
-                _groupHover={{ color: "white", fontWeight: "900" }}
-                fontSize="14px"
-                fontWeight="extrabold"
-                fontFamily={Font}
-              >
-                {cat.name}
-              </Text>
-            </Box>
-          ))}
-        </Link>
+        <Link to={`/categorythreads/${id}`}>{cat}</Link>
       </Box>
     </VStack>
   );
