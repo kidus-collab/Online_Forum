@@ -4,17 +4,35 @@ import { VStack, Text, Button, Flex, Box, Icon } from "@chakra-ui/react";
 import PostCard from "./PostCard";
 import { useParams } from "react-router-dom";
 import { Font } from "../../utils/constants";
-import { threads } from "../../Models/Thread";
-import DataService from "../../Services/DataService";
+//import { threads } from "../../Models/Thread";
+import { getCategories } from "../../Services/DataService";
 
 import { FaCode as ProgrammingIcon } from "react-icons/fa";
+import Category from "../../Models/Category";
 
 const Main = () => {
   const { categoryId } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [threadcards, setThreadCards] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState<
+    Category | undefined
+  >();
+  const [threadcards, setThreadCards] = useState<Array<JSX.Element> | null>(
+    null
+  );
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (categoryId) {
+      getCategories(categoryId).then((threads) => {
+        const cards = threads.map((th) => {
+          return <PostCard key={th.id} thread={th} />;
+        });
+      });
+      setThreadCards(cards);
+
+      if (!selectedCategory) {
+        setSelectedCategory(Category[0]);
+      }
+    }
+  }, [categoryId]);
 
   return (
     <VStack w="50%">
@@ -50,7 +68,7 @@ const Main = () => {
           );
         })}
       </Flex>
-      {/* <PostCard threads={threads} /> */}
+      {threadcards}
     </VStack>
   );
 };
