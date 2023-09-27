@@ -21,7 +21,7 @@ function App() {
       {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path={`/categorythreads/:id`} element={<Home />} />
+        <Route path={`/categorythreads/:categoryId`} element={<Home />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
