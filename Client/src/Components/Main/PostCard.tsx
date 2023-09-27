@@ -12,7 +12,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 //import { Link } from "react-router-dom";
-//import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Font, color } from "../../utils/constants";
 
 import { Thread } from "../../Models/Thread";
@@ -27,11 +27,11 @@ interface ThreadCardprops {
 }
 
 const PostCard: FC<ThreadCardprops> = ({ threads }) => {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  /*  const onClickShowThread = () => {
-    navigate(`/thread/${threads.id}`, { replace: true });
-  };*/
+  const onClickShowThread = () => {
+    navigate(`/thread/${threads.id}`);
+  };
   return (
     <Card bg={color[2]} rounded="xl" mx="auto">
       <CardHeader>
@@ -52,8 +52,11 @@ const PostCard: FC<ThreadCardprops> = ({ threads }) => {
           </Box>
         </Flex>
       </CardHeader>
-      <CardBody data-thread-id={threads.id} mt="-18px">
-        {/* onClick={onClickShowThread} */}
+      <CardBody
+        data-thread-id={threads.id}
+        mt="-18px"
+        onClick={onClickShowThread}
+      >
         <Text fontWeight="extrabold" fontFamily={Font} color={color[5]}>
           {threads.body ||
             "Lorem ipsum dolor sit amet consectetur adipisicing elit . Quaerat illo dolorum harum ex libero itaque incidunt omnis officiis possimus, veniam iure, fugiat unde, voluptatum reiciendis? Debitis illo cupiditate nobis repellendus?"}
