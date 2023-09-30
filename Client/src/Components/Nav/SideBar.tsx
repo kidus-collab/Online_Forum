@@ -32,6 +32,17 @@ const SideBar = () => {
         Forum
       </Text>
 
+      <Text
+        ml={2}
+        color="white"
+        fontWeight="semibold"
+        fontSize={{ sm: "15px", md: "17px", lg: "20px" }}
+        opacity="50%"
+        sx={{ fontFamily: Font }}
+      >
+        Categories
+      </Text>
+
       <CategoryBtn />
       <LoginCard />
     </Box>
