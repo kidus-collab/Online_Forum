@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Box } from "@chakra-ui/react";
 import { color } from "../../utils/constants";
 
+import { getTopCategories } from "../../Services/DataService";
+import TopCategory from "./TopCategory";
+
+// lodash
+import { groupBy } from "lodash/groupBy";
+
 // react modal for our right menu
 
 const RightMenu = () => {
+  const [topCategories, setTopCategories] = useState<JSX.Element[] | null>(
+    null
+  );
+
+  useEffect(() => {
+    getTopCategories()
+      .then()
+      .catch((err) => `Error Caught : ${err}`);
+  }, [topCategories]);
+
   return (
     <Box
       alignSelf="end"
@@ -16,7 +32,7 @@ const RightMenu = () => {
       boxShadow="xl"
       rounded="lg"
     >
-      RightMenu
+      <TopCategory />
     </Box>
   );
 };
