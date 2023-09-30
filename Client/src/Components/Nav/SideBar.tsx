@@ -4,7 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { Font, color } from "../../utils/constants";
 
 import LoginCard from "./LoginCard";
-import Category from "./Category";
+import CategoryBtn from "./CategoryBtn";
 
 const SideBar = () => {
   return (
@@ -32,7 +32,7 @@ const SideBar = () => {
         Forum
       </Text>
 
-      <Category />
+      <CategoryBtn />
       <LoginCard />
     </Box>
   );
