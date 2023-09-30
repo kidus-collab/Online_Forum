@@ -103,6 +103,8 @@ export async function getThreadsByCategory(
   return promise;
 }
 
+// This Sample data for the right menu
+
 export async function getTopCategories(): Promise<Array<CategoryThread>> {
   const promise = new Promise<Array<CategoryThread>>((res, rej) => {
     setTimeout(() => {
