@@ -7,7 +7,7 @@ import { color } from "../utils/constants";
 
 // components
 const SideBar = React.lazy(() => import("../Components/Nav/SideBar"));
-const RightMenu = React.lazy(() => import("../Components/RightMenu"));
+const RightMenu = React.lazy(() => import("../Components/RightMenu/RightMenu"));
 const Main = React.lazy(() => import("../Components/Main/Main "));
 const NavBar = React.lazy(() => import("../Components/Nav/NavBar"));
 
