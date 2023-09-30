@@ -22,7 +22,7 @@ category: [
 
 // pushing categories in the category.ts
 
-export async function getCategories(catId: string): Promise<Array<Category>> {
+export async function getCategories(catId?: string): Promise<Array<Category>> {
   const promise = new Promise<Array<Category>>((res, rej) => {
     const categories = [];
     const programming = new Category("1", "Programming", ProgrammingIcon);
