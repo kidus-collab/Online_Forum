@@ -24,7 +24,7 @@ import {
 
 interface ThreadCardprops {
   key: any;
-  thread: Thread;
+  thread: any;
 }
 
 const PostCard: FC<ThreadCardprops> = ({ key, thread }) => {
