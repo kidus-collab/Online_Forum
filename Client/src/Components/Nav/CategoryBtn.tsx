@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, VStack, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 import { Font, color } from "../../utils/constants";
 
@@ -20,7 +20,10 @@ const CategoryBtn = () => {
               display="flex"
               w="100%"
               key={cat.id}
-              bgColor={id === cat.id ? color[6] : "transparent"}
+              bgColor={{
+                base: id === cat.id ? color[6] : color[2],
+                md: id === cat.id ? color[6] : "transparent",
+              }}
               border="none"
               _hover={{ bgColor: color[6], color: "white" }}
               rounded="xl"
@@ -59,25 +62,18 @@ const CategoryBtn = () => {
   }, [id]);
 
   return (
-    <VStack my={10}>
-      <Text
-        ml="-50px"
-        color="white"
-        fontWeight="semibold"
-        fontSize={{ sm: "15px", md: "17px", lg: "20px" }}
-        opacity="50%"
-        sx={{ fontFamily: Font }}
-      >
-        Categories
-      </Text>
-      <Box mx="5px">
-        <Link to={`/categorythreads/${id}`}>{cat}</Link>
-      </Box>
-    </VStack>
+    <Box
+      my={5}
+      gap={{ base: 2, md: 0 }}
+      display={{ base: "flex", md: "block" }}
+      flexDirection={{ base: "row", md: "column" }}
+      rounded="lg"
+      mx="5px"
+    >
+      <Link to={`/categorythreads/${id}`}>{cat}</Link>
+    </Box>
   );
 };
+//</Link>
 
 export default CategoryBtn;
-
-/*
- */
