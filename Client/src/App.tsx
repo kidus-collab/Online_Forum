@@ -10,7 +10,6 @@ import {
   Home,
   EmailRegister,
 } from "./Pages/export";
-import { threads } from "./Models/Thread";
 
 //import { JsxElement } from 'typescript';
 
