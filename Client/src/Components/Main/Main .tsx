@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { VStack, Text, Button, Flex, Box, Icon } from "@chakra-ui/react";
 import PostCard from "./PostCard";
+import CategoryBtn from "../Nav/CategoryBtn";
 import { useParams } from "react-router-dom";
 import { Font } from "../../utils/constants";
 //import { threads } from "../../Models/Thread";
@@ -15,9 +16,8 @@ const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState<
     Category | undefined
   >();
-  const [threadcards, setThreadCards] = useState<Array<JSX.Element> | null>(
-    null
-  );
+  const [threadcards, setThreadCards] = useState<JSX.Element[] | null>(null);
+  // const [categorybtn]
 
   useEffect(() => {
     if (categoryId) {
@@ -25,14 +25,20 @@ const Main = () => {
         const cards = threads.map((th) => {
           return <PostCard key={th.id} thread={th} />;
         });
+        if (!selectedCategory) {
+          setSelectedCategory(threads[0]);
+        }
+        setThreadCards(cards);
       });
-      setThreadCards(cards);
-
-      if (!selectedCategory) {
-        setSelectedCategory(Category[0]);
-      }
     }
-  }, [categoryId]);
+    // category button on md to sm screen
+    /* 
+    getCategories()
+    .then((categories: Array<Category>) => { 
+        const 
+    } )
+    */
+  }, [categoryId, selectedCategory]);
 
   return (
     <VStack w="50%">
@@ -59,14 +65,7 @@ const Main = () => {
         display={{ md: "none" }}
         sx={{ overflowX: "auto", overflowWrap: "none" }}
       >
-        {threads.category.map((cat) => {
-          return (
-            <Button mr={2}>
-              <Box mr={2}>{cat.Icons}</Box>
-              <Text>{cat.name}</Text>
-            </Button>
-          );
-        })}
+        <CategoryBtn />
       </Flex>
       {threadcards}
     </VStack>
@@ -74,3 +73,12 @@ const Main = () => {
 };
 
 export default Main;
+
+/* 
+return (
+  <Button mr={2}>
+    <Box mr={2}>{cat.Icons}</Box>
+    <Text>{cat.name}</Text>
+  </Button>
+);
+*/
