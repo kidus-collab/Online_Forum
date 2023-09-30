@@ -10,17 +10,7 @@ import Category from "../../Models/Category";
 const CategoryBtn = () => {
   const [cat, setCat] = useState<any | null>(null);
   const [id, setId] = useState<string>("");
-  /*
-   */
 
-  /* .then((categories: Array<Category>) => {
-  const cats = categories.map((cat) => {
-     });
-  setCat(cats);
-})
-.catch((err) => {
-  console.log(err);
-}), */
   useEffect(() => {
     getCategories()
       .then((categories: Array<Category>) => {
