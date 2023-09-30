@@ -1,6 +1,7 @@
 // remove when backend api call is established
 import Category from "../Models/Category";
 import Thread from "../Models/Thread";
+import CategoryThread from "../Models/CategoryThread";
 
 import {
   FaFish as CookingIcon,
@@ -97,6 +98,58 @@ export async function getThreadsByCategory(
       });
 
       res(threads);
+    }, 2000);
+  });
+  return promise;
+}
+
+export async function getTopCategories(): Promise<Array<CategoryThread>> {
+  const promise = new Promise<Array<CategoryThread>>((res, rej) => {
+    setTimeout(() => {
+      const topCategory: Array<CategoryThread> = [];
+      const js = new CategoryThread(
+        "1",
+        "Programming",
+        "How can I learn JavaScript"
+      );
+      topCategory.push(js);
+      const node = new CategoryThread(
+        "2",
+        "Programming",
+        "How can I learn Node"
+      );
+      topCategory.push(node);
+      const react = new CategoryThread(
+        "3",
+        "Programming",
+        "How can I learn React"
+      );
+      topCategory.push(react);
+      const french = new CategoryThread(
+        "4",
+        "Cooking",
+        "How do I learn French cuisine?"
+      );
+      topCategory.push(french);
+      const italian = new CategoryThread(
+        "5",
+        "Cooking",
+        "How do I learn Italian cuisine?"
+      );
+      topCategory.push(italian);
+      const soccer = new CategoryThread(
+        "6",
+        "Sports",
+        "How can I learn to play Soccer"
+      );
+      topCategory.push(soccer);
+      const basketball = new CategoryThread(
+        "7",
+        "Sports",
+        "How can I learn to play Basketball"
+      );
+      topCategory.push(basketball);
+      res(topCategory);
     }, 2000);
   });
   return promise;
