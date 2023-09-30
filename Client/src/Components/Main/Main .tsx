@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { VStack, Text, Button, Flex, Box, Icon } from "@chakra-ui/react";
+import { VStack, Text, Flex, Box, Icon } from "@chakra-ui/react";
 import PostCard from "./PostCard";
 import CategoryBtn from "../Nav/CategoryBtn";
 import { useParams } from "react-router-dom";
@@ -67,7 +67,7 @@ const Main = () => {
       >
         <CategoryBtn />
       </Flex>
-      {threadcards}
+      {/*  {threadcards} */}
     </VStack>
   );
 };
