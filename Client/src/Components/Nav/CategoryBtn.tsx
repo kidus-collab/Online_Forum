@@ -9,7 +9,7 @@ import Category from "../../Models/Category";
 
 const CategoryBtn = () => {
   const [cat, setCat] = useState<any | null>(null);
-  const [id, setId] = useState<string>("");
+  const [id, setId] = useState<string | undefined>();
 
   useEffect(() => {
     getCategories()
@@ -63,12 +63,12 @@ const CategoryBtn = () => {
 
   return (
     <Box
-      my={5}
+      my={3}
       gap={{ base: 2, md: 0 }}
       display={{ base: "flex", md: "block" }}
       flexDirection={{ base: "row", md: "column" }}
       rounded="lg"
-      mx="5px"
+      mx={5}
     >
       <Link to={`/categorythreads/${id}`}>{cat}</Link>
     </Box>
