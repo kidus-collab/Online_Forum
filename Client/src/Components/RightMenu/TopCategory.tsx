@@ -19,7 +19,7 @@ const TopCategory: FC<topCategoryProps> = ({ topThread }) => {
         return (
           <Box key={top.ThreadId}>
             <Text
-              my={3}
+              my={1}
               _hover={{ color: "blue", textDecoration: "underline" }}
               mx="auto"
               fontFamily={Font}
@@ -38,8 +38,8 @@ const TopCategory: FC<topCategoryProps> = ({ topThread }) => {
           justifyContent="left"
           ml={4}
           overflowX="clip"
-          mt={4}
-          mb={2}
+          mt={1}
+          mb={1}
         >
           {threadElement}
         </Box>
@@ -49,7 +49,7 @@ const TopCategory: FC<topCategoryProps> = ({ topThread }) => {
   return (
     <VStack alignItems="left" justifyContent="left">
       <Text
-        mt={5}
+        mt={8}
         ml={4}
         color="white"
         as="strong"
