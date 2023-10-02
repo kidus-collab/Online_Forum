@@ -4,12 +4,13 @@ import Thread from "../Models/Thread";
 import CategoryThread from "../Models/CategoryThread";
 
 import {
-  FaFish as CookingIcon,
-  FaCode as ProgrammingIcon,
-  FaMoneyBillWave as FinanceIcon,
-  FaPlane as TravelIcon,
-  FaGamepad as GamingIcon,
+  FaFish,
+  FaCode,
+  FaMoneyBillWave,
+  FaPlane,
+  FaGamepad,
 } from "react-icons/fa";
+import { Icon } from "@chakra-ui/react";
 
 /*
 category: [
@@ -26,15 +27,15 @@ category: [
 export async function getCategories(catId?: string): Promise<Array<Category>> {
   const promise = new Promise<Array<Category>>((res, rej) => {
     const categories = [];
-    const programming = new Category("1", "Programming", ProgrammingIcon);
+    const programming = new Category("1", "Programming", FaCode);
     categories.push(programming);
-    const cooking = new Category("2", "Cooking", CookingIcon);
+    const cooking = new Category("2", "Cooking", FaFish);
     categories.push(cooking);
-    const sports = new Category("3", "Sports", GamingIcon);
+    const sports = new Category("3", "Sports", FaGamepad);
     categories.push(sports);
-    const entertainment = new Category("4", "Entertainment", FinanceIcon);
+    const entertainment = new Category("4", "Entertainment", FaMoneyBillWave);
     categories.push(entertainment);
-    const travel = new Category("5", "Travel", TravelIcon);
+    const travel = new Category("5", "Travel", FaPlane);
     categories.push(travel);
 
     res(categories);
@@ -73,7 +74,7 @@ export async function getThreadsByCategory(
             threadId: "1",
           },
         ],
-        category: new Category("1", "Programming", ProgrammingIcon),
+        category: new Category("1", "Programming", FaCode),
       });
       threads.push({
         id: "2",
@@ -155,6 +156,49 @@ export async function getTopCategories(): Promise<Array<CategoryThread>> {
       );
       topCategory.push(basketball);
       res(topCategory);
+    }, 2000);
+  });
+  return promise;
+}
+
+export async function getThreadbyId(Id: string): Promise<Thread> {
+  const promise = new Promise<Thread>((res, rej) => {
+    setTimeout(() => {
+      const thread = {
+        id: "1",
+        views: 22,
+        title: "Thread 1",
+        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        userName: "dave",
+        userId: "1",
+        points: 11,
+        createdOn: new Date(),
+        lastModifiedOn: new Date(),
+        threadItems: [
+          {
+            id: "1",
+            views: 22,
+            points: 2,
+            body: "ThreadItem 1",
+            userName: "jon",
+            userId: "2",
+            createdOn: new Date(),
+            threadId: "1",
+          },
+          {
+            id: "2",
+            views: 11,
+            points: 14,
+            body: "ThreadItem 2",
+            userName: "linda",
+            userId: "4",
+            createdOn: new Date(),
+            threadId: "1",
+          },
+        ],
+        category: new Category("1", "Programming", FaCode),
+      };
+      res(thread);
     }, 2000);
   });
   return promise;
