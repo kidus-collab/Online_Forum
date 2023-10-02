@@ -42,3 +42,4 @@ export const color = [
 
 //font
 export const Font = "Alata, sans-serif";
+// railway font
