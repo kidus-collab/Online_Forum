@@ -14,7 +14,7 @@ import { color, Font, otherIcons } from "../../utils/constants";
 
 import { NavLink } from "react-router-dom";
 
-import LoginpageImg from "../utils/loginpage.jpg";
+import LoginpageImg from "../../utils/loginpage.jpg";
 
 import { FaEye as visibiltyButton } from "react-icons/fa";
 
