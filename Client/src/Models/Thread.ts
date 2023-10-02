@@ -12,6 +12,7 @@ export default class Thread {
     public userId: string,
     public points: number,
     public createdOn: Date,
+    public lastModifiedOn: Date,
     public threadItems: Array<ThreadItem>,
     public category: Category
   ) {}
