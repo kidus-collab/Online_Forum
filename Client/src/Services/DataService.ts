@@ -59,6 +59,7 @@ export async function getThreadsByCategory(
         userId: "1",
         points: 11,
         createdOn: new Date(),
+        lastModifiedOn: new Date(),
         threadItems: [
           {
             id: "1",
@@ -68,6 +69,7 @@ export async function getThreadsByCategory(
             userName: "jon",
             userId: "2",
             createdOn: new Date(),
+
             threadId: "1",
           },
         ],
@@ -82,6 +84,7 @@ export async function getThreadsByCategory(
         userId: "2",
         points: 55,
         createdOn: new Date(),
+        lastModifiedOn: new Date(),
         threadItems: [
           {
             id: "1",
