@@ -98,7 +98,7 @@ export async function getThreadsByCategory(
             threadId: "2",
           },
         ],
-        category: new Category("1", "Programming", ProgrammingIcon),
+        category: new Category("1", "Programming", FaCode),
       });
 
       res(threads);
