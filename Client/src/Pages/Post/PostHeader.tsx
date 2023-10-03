@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { Text, Flex, Box, Avatar } from "@chakra-ui/react";
+import { Text, Flex, Button, Box, Avatar } from "@chakra-ui/react";
 
 import { Font, color } from "../../utils/constants";
 
@@ -24,7 +24,7 @@ const PostHeader: FC<PostHeaderProps> = ({
   title,
 }) => {
   return (
-    <Box mx="auto" my={3} justifyContent="left" alignItems="left">
+    <Box mx="auto" mb={3} justifyContent="left" alignItems="left">
       <Text
         mx={2}
         as="h1"
@@ -35,25 +35,42 @@ const PostHeader: FC<PostHeaderProps> = ({
       >
         {title ? title : "thread 1"}
       </Text>
-      <Box justifyContent="space-between">
-        <Flex>
-          <Avatar />
+      <Box my={8} display="Flex" justifyContent="space-between">
+        <Flex mr={{ base: "6rem", md: "8rem" }}>
+          <Box pos="relative">
+            <Avatar />
+            <Button
+              pos="absolute"
+              right={0}
+              bottom={0}
+              fontSize="13px"
+              fontWeight="extrabold"
+              color="white"
+              rounded="100%"
+              w={3}
+              h="30px"
+              bgColor={color[3]}
+            >
+              +
+            </Button>
+          </Box>
           <Text
             fontWeight="extrabold"
-            fontSize="16px"
+            fontSize={{ base: "13px", md: "15px" }}
             color={color[5]}
             fontFamily={Font}
+            ml={5}
           >
-            {userName}
+            {userName ? userName : "Kidus G"}
           </Text>
         </Flex>
         <Box>
           <Text
             fontWeight="extrabold"
-            fontSize="16px"
+            fontSize={{ base: "13px", md: "15px" }}
             color={color[5]}
             fontFamily={Font}
-          >{`${lastModifiedOn} min ago`}</Text>
+          >{`0 min ago`}</Text>
         </Box>
       </Box>
     </Box>
