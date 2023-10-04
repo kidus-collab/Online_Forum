@@ -26,6 +26,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/register/emailregister" element={<EmailRegister />} />
         <Route path="/post" element={<Post />} />
+        <Route path="/thread/:id" element={<Post />} />
       </Routes>
     </Suspense>
   );
