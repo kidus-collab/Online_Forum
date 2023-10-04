@@ -33,7 +33,7 @@ const SideBar = () => {
       </Text>
 
       <Text
-        ml={2}
+        ml={7}
         color="white"
         fontWeight="semibold"
         fontSize={{ sm: "15px", md: "17px", lg: "20px" }}
