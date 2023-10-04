@@ -48,7 +48,7 @@ const Post = () => {
         </Box>
         Forum
       </Text>
-      <Box mt="-190px">
+      <Box mt="-10px">
         <PostHeader
           userName={thread?.userName}
           lastModifiedOn={thread ? thread?.lastModifiedOn : new Date()}
@@ -56,7 +56,7 @@ const Post = () => {
         />
         <PostCategory categoryName={thread?.category.name} />
         <PostTitle title={thread?.title} />
-        <PostBody />
+        <PostBody body={thread?.body} />
       </Box>
     </VStack>
   );
