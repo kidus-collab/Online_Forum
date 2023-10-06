@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import PostHeader from "./PostHeader";
 import PostCategory from "./PostCategory";
 import PostBody from "./PostBody";
+import PostResponsesBuilder from "./PostResponsesBuilder";
+//import userNameandTime from "./userNameandTime";
 
 import { useParams } from "react-router-dom";
 import { Text, VStack, Box } from "@chakra-ui/react";
@@ -50,13 +52,14 @@ const Post = () => {
       </Text>
       <Box mt="-10px">
         <PostHeader
+          title={thread?.title}
           userName={thread?.userName}
           lastModifiedOn={thread ? thread?.lastModifiedOn : new Date()}
-          title={thread?.title}
         />
         <PostCategory categoryName={thread?.category.name} />
         <PostTitle title={thread?.title} />
         <PostBody body={thread?.body} />
+        <PostResponsesBuilder />
       </Box>
     </VStack>
   );
