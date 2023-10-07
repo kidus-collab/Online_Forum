@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { css } from "@emotion/react";
 import clsx from "clsx";
+// clsx for emotion
 
 export const Button = React.forwardRef(
   ({ className, active, reversed, ...props }, ref) => (

@@ -25,6 +25,8 @@ const HOTKEYS = {
   "mod+u": "underline",
   "mod+`": "code",
 };
+
+// bug found here
 const initialValue = [
   {
     type: "paragraph",
