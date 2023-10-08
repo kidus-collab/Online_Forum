@@ -1,13 +1,42 @@
 import React, { FC, useState, useEffect } from "react";
 
-import { Box, text, Flex } from "@chakra-ui/react";
-import RichEditor from "../../utils/editior/RichTextEditior";
+import { Box, Text, Flex } from "@chakra-ui/react";
+
 import PostResponses from "./PostResponses";
+import ThreadItem from "../../Models/Threaditem";
 
-interface PostResponsesBuilder {}
+interface PostResponsesBuilder {
+  threadItems?: Array<ThreadItem>;
+}
 
-const PostResponsesBuilder = () => {
-  return <div>PostResponsesBuilder</div>;
+const PostResponsesBuilder: FC<PostResponsesBuilder> = ({ threadItems }) => {
+  const [commentElement, setCommentElement] = useState<
+    JSX.Element[] | undefined
+  >();
+
+  useEffect(() => {
+    if (threadItems) {
+      const thItems = threadItems.map((th) => {
+        return (
+          <Box key={th.id}>
+            <PostResponses
+              body={th.body}
+              createdOn={th.createdOn}
+              userName={th.userName}
+              points={th.points}
+            />
+          </Box>
+        );
+      });
+      setCommentElement(thItems);
+    }
+  }, [commentElement]);
+  return (
+    <Box>
+      <Text>Comments</Text>
+      {commentElement}
+    </Box>
+  );
 };
 
 export default PostResponsesBuilder;
