@@ -59,7 +59,7 @@ const Post = () => {
         <PostCategory categoryName={thread?.category.name} />
         <PostTitle title={thread?.title} />
         <PostBody body={thread?.body} />
-        <PostResponsesBuilder />
+        <PostResponsesBuilder threadItems={thread?.threadItems} />
       </Box>
     </VStack>
   );
