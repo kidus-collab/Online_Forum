@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import RichEditor from "../../utils/editior/RichTextEditior";
 import UserNameandTime from "./userNameandTime";
-import ThreadPoints from "./likes&view/ThreadPoints";
+import ThreadPoints from "./points/ThreadPoints";
 import { Box, Text, Flex } from "@chakra-ui/react";
 
 import { Font, color } from "../../utils/constants";
