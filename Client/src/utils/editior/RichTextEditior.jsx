@@ -27,6 +27,7 @@ const HOTKEYS = {
 };
 
 // bug found here
+// possible type error
 const initialValue = [
   {
     type: "paragraph",
