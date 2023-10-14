@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   VStack,
@@ -20,6 +20,10 @@ import { FaEye as visibiltyButton } from "react-icons/fa";
 
 const Login = () => {
   const [visible, setVisible] = useBoolean();
+
+  useEffect(() => {
+    // on login update store and user
+  }, []);
   return (
     <HStack bgGradient={color[0]} h="100vh">
       <Text
