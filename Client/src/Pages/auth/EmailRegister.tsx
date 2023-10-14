@@ -4,11 +4,7 @@ import { NavLink } from "react-router-dom";
 //Reducer
 import registerationReducer from "../../Store/user/userRegisteration";
 
-import {
-  validatePassword,
-  PasswordTestResult,
-} from "../../utils/Passwordvalidator";
-
+import PasswordComparison from "./PasswordComparison";
 import {
   VStack,
   HStack,
@@ -18,28 +14,22 @@ import {
   Box,
   Flex,
   Input,
-  useBoolean,
 } from "@chakra-ui/react";
 
-import {
-  FaAngleLeft as BackwardButton,
-  FaEye as visibiltyButton,
-} from "react-icons/fa";
+import { FaAngleLeft as BackwardButton } from "react-icons/fa";
 import { color, Font } from "../../utils/constants";
 import RegisterImg from "../../utils/Registerpage.jpg";
 
 const initialRegistrationState = {
-  name: "Kidus",
-  username: "KidusG",
+  name: "",
+  username: "",
   password: "",
-  email: "guyfreaky894@gmail.com",
+  email: "",
   passwordConfirm: "",
   resultMsg: "",
 };
 
 const EmailRegister = () => {
-  const [visible, setVisible] = useBoolean();
-  const [onClickToggle, setOnClickToggle] = useBoolean();
   const [isRegisterDisabled, setRegisterDisabled] = useState(true);
 
   const [
@@ -86,43 +76,12 @@ const EmailRegister = () => {
     }
   };
 
-  // setting the password state & vaildate registiration , password
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ payload: e.target.value, type: "Password" });
-
-    // Regex password vaildatior to check the password
-    const passwordCheck: PasswordTestResult | undefined = validatePassword(
-      e.target.value
-    );
-    if (passwordCheck && !passwordCheck.isValid) {
-      allowRegister(passwordCheck.message, true);
-    }
-    passwordsSame(passwordConfirm, e.target.value);
-  };
-
-  // confirming previous filled passwords
-  const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ payload: e.target.value, type: "PasswordConfirm" });
-
-    passwordsSame(password, e.target.value);
-  };
-
-  // password same to check if password and password confirmation are the same
-  const passwordsSame = (passwordVal: string, passwordConfirmVal: string) => {
-    if (passwordVal !== passwordConfirmVal) {
-      allowRegister("Password do not match", true);
-      //??
-      return false;
-    } else {
-      allowRegister("", false);
-    }
-  };
   // register on click
   const onClickRegister = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    setOnClickToggle.toggle();
+    //ssetOnClickToggle.toggle();
   };
 
   return (
@@ -264,82 +223,12 @@ const EmailRegister = () => {
               value={email}
               onChange={onChangeEmail}
             />
-          </Box>
-          <Box p={3} alignItems="left">
-            <Text
-              fontWeight="extrabold"
-              color="white"
-              fontFamily={Font}
-              textAlign="left"
-            >
-              Password
-            </Text>
-            <Box
-              alignItems="left"
-              justifyContent="baseline"
-              rounded={"lg"}
-              bgColor={color[2]}
-            >
-              <Input
-                type={visible ? "text" : "password"}
-                variant="filled"
-                placeholder="At least 8 Characters"
-                bgColor="transparent"
-                color="white"
-                fontWeight="bold"
-                w="90%"
-                fontFamily={Font}
-                value={password}
-                onChange={onChangePassword}
-              />
-              <Icon
-                as={visibiltyButton}
-                mt={0}
-                textAlign="center"
-                color={color[5]}
-                fontSize="20px"
-                _hover={{ color: "white" }}
-                onClick={setVisible.toggle}
-              />
-            </Box>
-          </Box>
-          <Box p={3} alignItems="left">
-            <Text
-              fontWeight="extrabold"
-              color="white"
-              fontFamily={Font}
-              textAlign="left"
-            >
-              Password Confirmation
-            </Text>
-            <Box
-              alignItems="left"
-              justifyContent="baseline"
-              rounded={"lg"}
-              bgColor={color[2]}
-            >
-              <Input
-                type={visible ? "text" : "password"}
-                variant="filled"
-                placeholder="Password Confirmation"
-                bgColor="transparent"
-                color="white"
-                fontWeight="bold"
-                w="90%"
-                fontFamily={Font}
-                value={passwordConfirm}
-                onChange={onChangePasswordConfirm}
-              />
-              <Icon
-                as={visibiltyButton}
-                mt={0}
-                textAlign="center"
-                color={color[5]}
-                fontSize="20px"
-                _hover={{ color: "white" }}
-                onClick={setVisible.toggle}
-              />
-            </Box>
+
+            <PasswordComparison
+              dispatch={dispatch}
+              password={password}
+              passwordConfirm={passwordConfirm}
+            />
           </Box>
           <Text as="strong" fontFamily={Font} fontSize="20px" color="red">
             {resultMsg}
