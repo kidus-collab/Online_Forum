@@ -7,6 +7,8 @@ import { Font, color } from "../../utils/constants";
 //interface ProfileProps {}
 
 const Profile = () => {
+  useEffect(() => {});
+
   return <div>Profile</div>;
 };
 
