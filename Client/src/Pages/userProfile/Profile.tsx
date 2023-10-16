@@ -10,6 +10,7 @@ const Profile = () => {
   //useState here
   useEffect(() => {});
 
+  //function here
   return (
     <VStack alignItems="center" justifyContent="center">
       <Box alignItems="left" justifyContent="left">
